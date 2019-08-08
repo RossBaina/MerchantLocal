@@ -5,10 +5,24 @@ import projectmarket.products.Product;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Purchase {
+public class Order {
+    public ArrayList<PurchaseItem> selectedItems;
+
     public ArrayList<Double> quantities;
     public ArrayList<PurchaseItem> itemList;
     public Double total = 0d;
+
+    public Order(){
+        selectedItems = new ArrayList<>();
+    }
+
+
+    public void ShowProducts(){
+        for (int i = 0; i < selectedItems.size(); i++){
+            Product p = selectedItems.get(i);
+            System.out.println(p.ShowProduct());
+        }
+    }
 
     public ArrayList<PurchaseItem> selectQuantities(ArrayList<Integer> products, String[] merchantData) throws Exception {
         Scanner scannerConsole;

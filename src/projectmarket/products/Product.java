@@ -10,15 +10,20 @@ public class Product {
     public ArrayList<Integer> selectedProduct;
     public Integer selectedMerchantId;
 
-    public void showProductByMerchantId(Integer merchantId) throws Exception {
-        selectedMerchantId = merchantId;
-        importFile = new File(merchantId + "_product.txt");
-        Scanner scanner = new Scanner(importFile);
-        System.out.println("Product ID, productName, unit Price, available, unit, office");
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            System.out.println(line);
-        }
+    protected Integer id;
+    protected String name;
+    protected String price;
+    protected String available;
+    protected String unitOfMeasure;
+
+    // productString = "2,fideos lazaroni,4.5,true,0.5Kg"
+    public Product(String productString){
+        String productData[] = productString.split(",");
+        id = Integer.parseInt(productData[0]);
+        name = productData[1];
+        price = productData[2];
+        available = productData[3];
+        unitOfMeasure = productData[4];
     }
 
     public ArrayList<Integer> selectProducts() throws Exception {
@@ -31,17 +36,7 @@ public class Product {
         return selectedProduct;
     }
 
-    public static String[] getProductData(Integer productId, Integer selectedMerchantId) throws Exception {
-        String[] productData;
-        File importFile = new File(selectedMerchantId + "_product.txt");
-        Scanner scanner = new Scanner(importFile);
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            productData = line.split(",");
-            if (new Integer(productData[0]).compareTo(productId)==0) {
-                return productData;
-            }
-        }
-        return null;
+    public String ShowProduct(){
+        return id + " " + name + " " + price;
     }
 }

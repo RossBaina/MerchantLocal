@@ -1,15 +1,20 @@
 package projectmarket.market;
 
+import projectmarket.products.Product;
+
 import java.util.Scanner;
 
-public class PurchaseItem {
-    public String productName;
-    public String merchantAdress;
-    public Double unitPrice;
-    public String unit;
+public class PurchaseItem extends Product {
     public Double quantity;
     public Double total;
-   public void showPurchaseItemRequestQuantity(){
+
+    public PurchaseItem(Product product, Double quantity ){
+        id = product.id;
+        quantity = quantity;
+
+    }
+
+   /*public void showPurchaseItemRequestQuantity(){
        System.out.println("ProductName, MerchantAddress, UnitPrice(Bs),unit");
        System.out.println(productName+", "+merchantAdress+", "+unitPrice+", "+unit);
    }
@@ -18,5 +23,5 @@ public class PurchaseItem {
    }
    public static void showHeaderPurchaseItem(){
        System.out.println("ProductName, MerchantAddress, UnitPrice(Bs),unit, quantity, total");
-   }
+   }*/
 }
